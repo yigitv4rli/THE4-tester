@@ -12,8 +12,12 @@ with open("the4_data.json","r") as file:
         data = line.split(":::")
         data[0] = eval(data[0])
         data[1] = eval(data[1])
+        for i in range(len(data[1])) :
+            data[1][i].sort()
         result = the4.chalchiuhtlicue(data[0])
-        
+        for k in range(len(result)) :
+            result[k].sort()
+
         if result == data[1]:
             print("Succesful")
         elif result != data[1]:
@@ -22,6 +26,8 @@ with open("the4_data.json","r") as file:
             print("It should have been {}.".format(data[1]))
             wrong_count += 1
 
+            
+            
 end_time = time.time()
 
 print("Execution time is: {}".format(end_time-start_time))
