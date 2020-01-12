@@ -5,9 +5,7 @@ start_time = time.time()
 
 wrong_count = 0
 with open("the4_data.json","r") as file:
-    lines = file.readlines()
-    for i in range(len(lines)-1):
-        lines[i] = lines[i][:-1]
+    lines = file.read().splitlines()
     for line in lines:
         data = line.split(":::")
         data[0] = eval(data[0])
@@ -17,8 +15,9 @@ with open("the4_data.json","r") as file:
         result = the4.chalchiuhtlicue(data[0])
         for k in range(len(result)) :
             result[k].sort()
-
-        if result == data[1]:
+        
+        
+        if result == data[1] and lines.index(line)%100 == 0:
             print("Succesful")
         elif result != data[1]:
             print("Failed on {}".format(data[0]))
