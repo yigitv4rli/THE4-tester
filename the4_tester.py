@@ -1,6 +1,15 @@
 import the4
 import time
 
+def dictify(nested_lst):
+    out_lst=[]
+    for lst in nested_lst:
+        Dict={}
+        for e in lst:
+            Dict[e]=None
+        out_lst.append([Dict])
+    return out_lst
+
 start_time = time.time()
 
 wrong_count = 0
@@ -18,9 +27,9 @@ with open("the4_data.json","r") as file:
         for k in range(len(result)) :
             result[k].sort()
 
-        if result == data[1]:
+        if dictify(result) == dictify(data[1]):
             print("Succesful")
-        elif result != data[1]:
+        elif dictify(result) != dictify(data[1]):
             print("Failed on {}".format(data[0]))
             print("Your work found: {}".format(result))
             print("It should have been {}.".format(data[1]))
